@@ -6,6 +6,7 @@ const Base64 = require('js-base64').Base64;
 
 const token = process.env.GITHUB_TOKEN;
 const user = process.env.USER;
+const organization = 'compbiocore';
 
 const getRepos = (org) => {
   return new Promise((resolve, reject) => {
@@ -39,7 +40,7 @@ const getRepoInfo = (org, repo, type) => {
   });
 };
 
-const repoPromise = getRepos('compbiocore');
+const repoPromise = getRepos(organization);
 
 repoPromise.then((values) => {
   return JSON.stringify(values.map((item) => item.name))
@@ -51,7 +52,7 @@ repoPromise.then((values) => {
 let rawdata = fs.readFileSync('data/repos.json');
 let repos = JSON.parse(rawdata);
 
-const readmePromises = repos.map((item) => getRepoInfo('compbiocore', item, 'readme'));
+const readmePromises = repos.map((item) => getRepoInfo(organization, item, 'readme'));
 
 Promise.all(readmePromises).then((values) => {
   return JSON.stringify(values, null, 2);
@@ -63,7 +64,7 @@ Promise.all(readmePromises).then((values) => {
 });
 
 
-const contentPromises = repos.map((item) => getRepoInfo('compbiocore', item, 'contents'));
+const contentPromises = repos.map((item) => getRepoInfo(organization, item, 'contents'));
 
 Promise.all(contentPromises).then((values) => {
   return JSON.stringify(values, null, 2);
