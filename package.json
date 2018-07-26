@@ -9,9 +9,11 @@
   "author": "Fernando Gelin",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^6.0.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
     "hoek": "^5.0.3",
+    "js-base64": "^2.4.8",
     "request": "^2.87.0"
   }
 }
