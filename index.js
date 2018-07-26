@@ -2,9 +2,10 @@ require('dotenv').config()
 
 const fs   = require('fs');
 const request = require('request');
-var Base64 = require('js-base64').Base64;
+const Base64 = require('js-base64').Base64;
 
 const token = process.env.GITHUB_TOKEN;
+const user = process.env.USER;
 
 const getRepos = (org) => {
   return new Promise((resolve, reject) => {
@@ -12,7 +13,7 @@ const getRepos = (org) => {
       url: `https://api.github.com/orgs/${org}/repos`,
       headers: {
         'Authorization': `token ${token}`,
-        'User-Agent': 'fernandogelin',
+        'User-Agent': user,
         'Accept': 'application/vnd.github.v3+json'
       }
     }, (err, response) => {
@@ -22,13 +23,13 @@ const getRepos = (org) => {
   });
 };
 
-const getReadme = (org, repo) => {
+const getRepoInfo = (org, repo, type) => {
   return new Promise((resolve, reject) => {
     request({
-      url: `https://api.github.com/repos/${org}/${repo}/readme`,
+      url: `https://api.github.com/repos/${org}/${repo}/${type}`,
       headers: {
         'Authorization': `token ${token}`,
-        'User-Agent': 'fernandogelin',
+        'User-Agent': user,
         'Accept': 'application/vnd.github.v3+json'
       }
     }, (err, response) => {
@@ -50,7 +51,7 @@ repoPromise.then((values) => {
 let rawdata = fs.readFileSync('data/repos.json');
 let repos = JSON.parse(rawdata);
 
-const readmePromises = repos.map((item) => getReadme('compbiocore', item));
+const readmePromises = repos.map((item) => getRepoInfo('compbiocore', item, 'readme'));
 
 Promise.all(readmePromises).then((values) => {
   return JSON.stringify(values, null, 2);
@@ -61,7 +62,25 @@ Promise.all(readmePromises).then((values) => {
   console.log('Data written to data/readmes.json');
 });
 
+
+const contentPromises = repos.map((item) => getRepoInfo('compbiocore', item, 'contents'));
+
+Promise.all(contentPromises).then((values) => {
+  return JSON.stringify(values, null, 2);
+}).then((str) => {
+  // values, do stuff with
+  fs.writeFileSync('data/contents.json', str);
+  // success case, the file was saved
+  console.log('Data written to data/contents.json');
+});
+
+
 let readmes_raw = fs.readFileSync("data/readmes.json");
 let readmes = JSON.parse(readmes_raw);
 
-readmes.map((item) => console.log(Base64.decode(item.content)));
+const getOverview = (readme) => {
+  const decoded_readme = Base64.decode(readme.content);
+  console.log(decoded_readme.split("\n"));
+}
+
+readmes.map((item) => getOverview(item));
