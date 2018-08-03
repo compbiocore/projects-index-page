@@ -22,8 +22,7 @@ const githubRequest = (path) => {
         'Accept': 'application/vnd.github.v3+json'
       }
     }, (err, response) => {
-      const json = JSON.parse(response.body);
-      resolve(json);
+      resolve(JSON.parse(response.body));
     });
   });
 };
@@ -37,8 +36,9 @@ const githubRequest = (path) => {
  */
 githubRequest(`orgs/${organization}/repos`).then((values) => {
   // gets the contents of the repos
-  const contentPromises = values.map((repo) => githubRequest(`repos/${organization}/${repo.name}/contents`))
-  return Promise.all(contentPromises)
+  return Promise.all(values.map((repo) => {
+    return githubRequest(`repos/${organization}/${repo.name}/contents`)
+  }));
 }).then((values) => {
   // checks if the repo contains the docs folder
   return _.compact(_.flatten(values.map((content) =>
@@ -48,13 +48,12 @@ githubRequest(`orgs/${organization}/repos`).then((values) => {
   )));
 }).then((values) => {
   // gets the README of the repos that have docs folder
-  const readmePromises = values.map((item) => githubRequest(`repos/${organization}/${item}/readme`))
-  return Promise.all(readmePromises)
+  return Promise.all(values.map((item) => {
+    return githubRequest(`repos/${organization}/${item}/readme`);
+  }))
 }).then((values) => {
-  // decode and stringify README content
-  return JSON.stringify(values.map((item) => Base64.decode(item.content)))
-}).then((str) => {
-  // save READMEs to file
+  // decode and save readme content
+  const str = JSON.stringify(values.map((item) => Base64.decode(item.content)));
   fs.writeFileSync('data/readmes.json', str);
   console.log('Data written to data/readmes.json');
 });
