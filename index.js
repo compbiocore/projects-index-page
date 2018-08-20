@@ -4,6 +4,7 @@ const fs   = require('fs');
 const request = require('request');
 const Base64 = require('js-base64').Base64;
 const _ = require('lodash');
+const yaml = require('js-yaml');
 
 const token = process.env.GITHUB_TOKEN;
 const user = process.env.USER;
@@ -43,17 +44,17 @@ githubRequest(`orgs/${organization}/repos`).then((values) => {
   // checks if the repo contains the docs folder
   return _.compact(_.flatten(values.map((content) =>
     content.map((file) => {
-      if (Object.values(file).includes('docs')) return file.url.split('/')[5];
+      if (Object.values(file).includes('ready.yml')) return file.url.split('/')[5];
     })
   )));
 }).then((values) => {
-  // gets the README of the repos that have docs folder
+  // gets contents from ready.yml of the repos that have docs folder
   return Promise.all(values.map((item) => {
-    return githubRequest(`repos/${organization}/${item}/readme`);
+    return githubRequest(`repos/${organization}/${item}/contents/ready.yml`);
   }))
 }).then((values) => {
   // decode and save readme content
-  const str = JSON.stringify(values.map((item) => Base64.decode(item.content)));
-  fs.writeFileSync('data/readmes.json', str);
+  const str = values.map((item) => yaml.safeLoad(Base64.decode(item.content)));
+  fs.writeFileSync('data/readmes.json', JSON.stringify(str, null, 2));
   console.log('Data written to data/readmes.json');
 });
