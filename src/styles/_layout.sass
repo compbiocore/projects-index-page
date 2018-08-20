@@ -14,19 +14,6 @@ div, a
     overflow: scroll
     padding: $base-line-height / 2
 
-.site-header
-  position: relative
-  z-index: 10
-  display: flex
-  margin-bottom: $base-line-height * 2
-  padding-top: $base-line-height / 2
-  padding-bottom: $base-line-height / 2
-  +respond-to(smaller-screens)
-    margin-bottom: $base-line-height
-
-.site-title
-  flex-grow: 1
-
 .site-nav
   ul
     margin-bottom: 0
@@ -40,75 +27,65 @@ div, a
   max-width: 70ex
   margin: 0 auto
 
-.post
-  position: relative
-  padding-bottom: $base-line-height / 2
-  margin-bottom: $base-line-height * 1.5
-  &::after
-    content: " "
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    border-bottom: 1px solid #DDD
-
-.cover-art
-  position: relative
-  z-index: 5
-  overflow: hidden
-  //min-height: $base-line-height * 11
-  padding-top: $base-line-height * 2
-  //padding-left: $base-line-height
-  //padding-right: $base-line-height
-  margin-top: -$base-line-height * 4
-  margin-left: -$base-line-height
-  margin-right: -$base-line-height
-  margin-bottom: $base-line-height * 2
-  +respond-to(smaller-screens)
-    margin-top: -$base-line-height * 3
-    margin-bottom: $base-line-height
-  svg
-    display: block
-    width: 100%
-    height: $base-line-height * 11
-    margin: 0 auto
-    +respond-to(smaller-screens)
-      height: $base-line-height * 8
-
-.cover-art-full
-  margin-top: -$base-line-height * 6
-  svg
-    height: $base-line-height * 13
-
-.cover-art-caption
-  position: relative
-  top: -$base-line-height * 2
-  display: block
-  margin-bottom: -$base-line-height
-  +respond-to(smaller-screens)
-    top: -$base-line-height
-    margin-bottom: auto
-
-// Tiles
-.tiles
-  flex-wrap: wrap
-  justify-content: space-between
-
-.tile-item
-  flex: 0 0 32%
-  height: 30vh
-  margin-bottom: 1rem
-
-// Main Groups
-.main-banner
+// Title
+.title-container
   display: flex
   flex-direction: row
   justify-content: center
+  align-items: center
+  height: 50ex
+  background-color: $blue
+  color: white
+
+.title-logo
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  svg
+    height: 20ex
+    margin-right: 1rem
+    margin-left: 1rem
+    fill: white
+  #brown
+    margin-left: 5rem
+
+.title-group
+  margin-right: 5rem
+  margin-left: 6rem
+
+
+// Main Groups
+
+.section
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-around
+  padding-top: 3rem
+  padding-bottom: 3rem
+
+.section-group
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: flex-end
 
 .group-card
   display: flex
-  height: 10rem
-  width: 30rem
+  flex-direction: column
   border: solid 1px lightgray
-  margin-bottom: 2rem
-  padding: 2rem
+  margin-left: 2rem
+  padding: 1rem
+  max-width: 40ex
+  small
+    margin-bottom: -0.8rem
+    font-size: 0.7rem
+    color: $light-gray
+
+.group-card-title
+  display: flex
+  flex: row
+  align-items: center
+  span
+    margin-left: 1rem
+    color: $light-gray

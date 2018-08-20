@@ -1,7 +1,16 @@
-{{ partial "header" .}}
+<!doctype html>
+<html lang="en">
+    {{ partial "header" .}}
 
-<body>
+    <body>
 
-{{ partial "projects" . }}
+    {{ partial "nav" . }}
+    {{ partial "title" . }}
+    {{ partial "software" . }}
+    {{ partial "workshops" . }}
+    {{ partial "tutorials" . }}
+    {{ partial "documentation" . }}
 
-</body>
+    </body>
+    {{ partial "scripts.html"}}
+</html>
