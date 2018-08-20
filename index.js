@@ -55,6 +55,6 @@ githubRequest(`orgs/${organization}/repos`).then((values) => {
 }).then((values) => {
   // decode and save readme content
   const str = values.map((item) => yaml.safeLoad(Base64.decode(item.content)));
-  fs.writeFileSync('data/readmes.json', JSON.stringify(str, null, 2));
-  console.log('Data written to data/readmes.json');
+  fs.writeFileSync('data/info.json', JSON.stringify(str, null, 2));
+  console.log('Data written to data/info.json');
 });

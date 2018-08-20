@@ -1,5 +1,4 @@
 node_modules
-data/readmes.json
-data/repos.json
-data/contents.json
+data/
+static/styles/css/
 .env
