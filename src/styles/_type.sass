@@ -181,8 +181,11 @@ kbd
 
 .section-title
   text-shadow: 3px 3px 5px $light-gray
+  color: $dark-gray
   h1
     font-size: 4rem
+    +respond-to(smaller-screens)
+      font-size: 3rem
 
 .description
   font-family: "ff-avance-pro",serif
