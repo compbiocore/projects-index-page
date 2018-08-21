@@ -99,6 +99,7 @@ div, a
   padding: 1rem
   +respond-to(smaller-screens)
     flex-basis: 100%
+    margin-bottom: 1rem
   small
     margin-bottom: -0.8rem
     font-size: 0.7rem
@@ -119,3 +120,25 @@ hr
   margin-bottom: 2rem !important
   border: 0
   border-top: 1px solid $light-gray-2 !important
+
+footer
+  background-color: $dark-gray
+  height: 34ex
+  margin-left: -2rem
+  margin-right: -2rem
+
+.footer
+  padding: 4rem 0 2rem 8rem
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start
+  svg
+    margin-bottom: 1rem
+    height: 3rem
+    fill: $light-gray-2
+
+.copyright
+  color: $light-gray-2
+  font-family: "ff-avance-pro", sans-serif
+  text-align: center
