@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700,italic|Raleway:400,800")
+@import url("https://use.typekit.net/uyg4mvn.css")
 
 html
   font-size: $base-font-size
@@ -175,12 +175,16 @@ kbd
   +type-scale(2)
   text-align: center
 
-.cover-art-caption
-  +type-scale(2)
-  font-family: $heading-font-family
-  text-transform: uppercase
-  opacity: 0.5
-  &, a
-    color: $base-font-color
-  +respond-to(smaller-screens)
-    text-align: center
+.title, .section-title
+  font-family: "almaq-refined", sans-serif
+  font-size: 3rem
+
+.section-title
+  text-shadow: 3px 3px 5px $light-gray
+  h1
+    font-size: 4rem
+
+.description
+  font-family: "ff-avance-pro",serif
+  color: $light-gray
+  +type-scale(4)

@@ -33,26 +33,41 @@ div, a
   flex-direction: row
   justify-content: center
   align-items: center
-  height: 50ex
+  flex-wrap: wrap
   background-color: $blue
   color: white
+  margin-left: -2rem
+  margin-right: -2rem
+  padding: 5rem 0 5rem 0
+  +respond-to(smaller-screens)
+    padding: 1rem 0 1rem 0
+
 
 .title-logo
   display: flex
   flex-direction: row
-  justify-content: flex-end
+  flex-wrap: nowrap
+  flex: 1 1 0
+  justify-content: center
+  align-items: center
   svg
-    height: 20ex
     margin-right: 1rem
     margin-left: 1rem
-    fill: white
+    height: 20ex
+    +respond-to(smaller-screens)
+      height: 16ex
+      padding: 2rem 0 1rem 0
   #brown
-    margin-left: 5rem
+    .st2
+      fill: $light-gray-2
+  #logo
+    .st2
+      fill: $yellow
 
 .title-group
-  margin-right: 5rem
-  margin-left: 6rem
-
+  flex: 2 1 0
+  padding-right: 5rem
+  padding-left: 5rem
 
 // Main Groups
 
@@ -64,19 +79,26 @@ div, a
   padding-top: 3rem
   padding-bottom: 3rem
 
+.section-title
+  flex: 1 1 0
+  flex-wrap: wrap
+  text-align: center
+
+
 .section-group
   display: flex
-  flex-direction: row
   flex-wrap: wrap
-  justify-content: flex-end
+  flex: 2 1 0
+  justify-content: space-around
 
 .group-card
   display: flex
   flex-direction: column
+  flex-basis: 30%
   border: solid 1px lightgray
-  margin-left: 2rem
   padding: 1rem
-  max-width: 40ex
+  +respond-to(smaller-screens)
+    flex-basis: 100%
   small
     margin-bottom: -0.8rem
     font-size: 0.7rem
@@ -86,6 +108,14 @@ div, a
   display: flex
   flex: row
   align-items: center
+  justify-content: space-between
   span
     margin-left: 1rem
     color: $light-gray
+
+
+hr
+  margin-top: 2rem !important
+  margin-bottom: 2rem !important
+  border: 0
+  border-top: 1px solid $light-gray-2 !important

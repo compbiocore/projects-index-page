@@ -4,7 +4,7 @@ title: "Computational Biology Core Projects"
 
 # Site params
 params:
-    description: "Welcome to the Computational Biology CORE at Brown University’s software and workshop documentation page. Here you can find documentation on workshops we have conducted for the Brown community as well as documentation for software packages that we release."
+    description: "Here you can find documentation from workshops we conducted at Brown, as well as documentation for our software packages, tutorials, and best practices."
 
 # Menu items
 menu:
