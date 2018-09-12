@@ -1,7 +1,7 @@
 language: go
 go:
   - "1.8"
-
+  
 git:
   depth: 10
 
@@ -12,7 +12,6 @@ before_install:
   - sudo apt-get install node -y
   - go get -u -v github.com/gohugoio/hugo
   - npm install -g gulp
-#  - npm install -g travis-ci-cloudfront-invalidation
 
 install:
   - npm install
