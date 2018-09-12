@@ -58,10 +58,10 @@ div, a
       height: 16ex
       padding: 2rem 0 1rem 0
   #brown
-    .st2
+    .st2-b
       fill: $light-gray-2
   #logo
-    .st1
+    .st1c
       fill: $blue
 
 .title-group
@@ -73,30 +73,28 @@ div, a
 
 .section
   display: flex
-  flex-direction: row
+  flex-direction: column
   flex-wrap: wrap
   justify-content: space-around
-  padding-top: 3rem
-  padding-bottom: 3rem
+  padding: 3rem
 
 .section-title
-  flex: 1 1 0
+  margin-bottom: 1rem
   flex-wrap: wrap
-  text-align: center
-
+  text-align: flex-start
 
 .section-group
   display: flex
   flex-wrap: wrap
-  flex: 2 1 0
-  justify-content: space-around
+  justify-content: space-between
 
 .group-card
   display: flex
   flex-direction: column
-  flex-basis: 30%
+  flex-basis: 32%
   border: solid 1px lightgray
   padding: 1rem
+  margin-bottom: 1.2rem
   +respond-to(smaller-screens)
     flex-basis: 100%
     margin-bottom: 1rem
@@ -104,6 +102,9 @@ div, a
     margin-bottom: -0.8rem
     font-size: 0.7rem
     color: $light-gray-2
+  .app-link
+    font-size: 0.7rem !important
+    margin-bottom: 0.5rem
 
 .group-card-title
   display: flex
@@ -120,6 +121,7 @@ hr
   margin-bottom: 2rem !important
   border: 0
   border-top: 1px solid $light-gray-2 !important
+
 
 footer
   background-color: $dark-gray
@@ -139,6 +141,13 @@ footer
     fill: $light-gray-2
 
 .copyright
+  display: flex
+  flex-direction: column
+  justify-content: center
   color: $light-gray-2
   font-family: "ff-avance-pro", sans-serif
   text-align: center
+  small
+    span
+      svg
+        height: 14px

@@ -3,6 +3,12 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var exec = require('child_process').exec;
 
+
+// Run node to get data and save them into data folder
+gulp.task('data', () => {
+  exec('npm run getdata')
+});
+
 // Compile `*.sass`
 gulp.task('sass', () => {
   gulp.src('src/styles/main.sass')

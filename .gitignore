@@ -1,4 +1,4 @@
 node_modules
-data/
+data/*.json
 static/styles/css/
 .env

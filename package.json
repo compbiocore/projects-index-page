@@ -4,8 +4,9 @@
   "description": "CBC Projects Index",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "gulp",
+    "getdata": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"  },
   "author": "Fernando Gelin",
   "license": "MIT",
   "dependencies": {
