@@ -6,10 +6,12 @@
   "scripts": {
     "start": "gulp",
     "getdata": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"  },
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "Fernando Gelin",
   "license": "MIT",
   "dependencies": {
+    "cryptiles": "^4.1.2",
     "dotenv": "^6.0.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",

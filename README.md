@@ -1,7 +1,7 @@
 # CBC Projects Index Page
 
 
-[![Travis](https://img.shields.io/travis/compbiocore/cbc-projects-index.svg?style=flat-square)](https://travis-ci.org/compbiocore/cbc-projects-index)
+[![Travis](https://img.shields.io/travis/compbiocore/cbc-projects-index.svg?style=flat-square)](https://travis-ci.org/compbiocore/projects-index-page)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LINK)
 
 ## Overview
