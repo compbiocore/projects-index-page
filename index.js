@@ -7,7 +7,7 @@ const _ = require('lodash');
 const yaml = require('js-yaml');
 
 const token = process.env.GITHUB_TOKEN;
-const user = process.env.USER;
+const user = process.env.GITHUB_USER;
 const organization = 'compbiocore';
 
 /**
